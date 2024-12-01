@@ -296,6 +296,10 @@ function startGame(selectedLevel) {
     // Схожий процес як і раніше, тільки інтервал буде налаштований на рух лише одного кроку за такт
     gameTitle.style.display = "none";
 
+    const backgroundMusic = document.getElementById('background-music');
+    backgroundMusic.currentTime = 0;
+    backgroundMusic.play();
+
     instructions.style.opacity = "0";
     levelSelect.style.opacity = "0";
     setTimeout(() => {
@@ -333,6 +337,10 @@ function endGame() {
     score = 0;
     scoreDisplay.textContent = score;
     levelDisplay.textContent = "1";
+
+    const backgroundMusic = document.getElementById('background-music');
+    backgroundMusic.pause();
+
 }
 
 document.addEventListener("keydown", e => {
