@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Tetris</title>
+</head>
+<body>
+    <h1 id="game-title" style="margin-bottom: 0px;">Tetris</h1>
+
+    <audio id="background-music" loop>
+        <source src="audio/please-calm-my-mind-125566.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="level-select">
+        <p>Choose your level:</p>
+        <button onclick="startGame(1)" class="level-btn">Easy</button>
+        <button onclick="startGame(2)" class="level-btn">Medium</button>
+        <button onclick="startGame(3)" class="level-btn">Hard</button>
+        <button onclick="startGame(4)" class="level-btn">Very hard</button>
+    </div>
+
+    <div id="instructions">
+      <h2>Як грати?</h2>
+        <ul>
+            <li><span class="icon">⬆️</span> Поміняти фігуру</li>
+            <li><span class="icon">⬅️</span> Перемістити ліворуч</li>
+            <li><span class="icon">➡️</span> Перемістити праворуч</li>
+            <li><span class="icon">⬇️</span> Перемістити вниз</li>
+        </ul>
+        </div>
+    </div>
+    <div id="game-board"></div>
+        <div id="score-board">
+        <p>Score: <span id="score">0</span></p>
+        <p>Level: <span id="level">1</span></p>
+    </div>
+    <div id="end-game">
+        <button onclick="endGame()">End Game</button>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

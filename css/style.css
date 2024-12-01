@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+#game-board {
+    display: grid;
+    gap: 1px;
+    background: #111;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+    #game-board.active {
+        opacity: 1;
+    }
+
+.cell {
+    background: #333;
+}
+
+.active {
+    background: #f39c12;
+}
+
+.filled {
+    background: #16a085;
+}
+
+#level-select, #end-game {
+    margin-top: 20px;
+}
+
+#score-board {
+    display: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+    button:hover {
+        transform: scale(1.1);
+    }
+
+#end-game {
+    display: none;
+}
+
+#instructions {
+    margin-top: 40px;
+}
+
+    #instructions h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        animation: fadeIn 2s forwards;
+        animation-delay: 1s;
+    }
+
+    #instructions ul {
+        list-style: none;
+    }
+
+    #instructions li {
+        font-size: 1.2rem;
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeInUp 1s forwards;
+    }
+
+@keyframes slideInTop {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInBottom {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+#game-title h1 {
+    font-size: 3rem;
+    animation: slideInTop 1s ease-out forwards;
+}
+
+#game-title p {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    animation: slideInBottom 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+#instructions li:nth-child(1) {
+    animation-delay: 1.5s;
+}
+
+#instructions li:nth-child(2) {
+    animation-delay: 2s;
+}
+
+#instructions li:nth-child(3) {
+    animation-delay: 2.5s;
+}
+
+#instructions li:nth-child(4) {
+    animation-delay: 3s;
+}
+
+#instructions li:nth-child(5) {
+    animation-delay: 3.5s;
+}
+
+.level-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+    .level-btn:hover {
+        background-color: #45a049;
+    }
