@@ -126,22 +126,6 @@ function moveRight() {
     drawFigure();
 }
 
-function rotateFigure() {
-    clearFigure();
-    const previousShape = currentFigure.shape;
-    currentFigure.rotation = (currentFigure.rotation + 1) % figures[currentFigure.type].length;
-    currentFigure.shape = figures[currentFigure.type][currentFigure.rotation];
-
-    const isCollision = currentFigure.shape.some(
-        index => currentPosition + index >= width * height || cells[currentPosition + index]?.classList.contains("filled")
-    );
-
-    if (isCollision) {
-        currentFigure.shape = previousShape; // Revert to previous shape
-    }
-    drawFigure();
-}
-
 function lockFigure() {
     currentFigure.shape.forEach(index => {
         cells[currentPosition + index]?.classList.add("filled");
@@ -155,6 +139,8 @@ function checkFullLines() {
         const start = row * width;
         const isFull = cells.slice(start, start + width).every(cell => cell.classList.contains("filled"));
         if (isFull) {
+            score += calculateScore();
+
             removeLine(start); // Якщо рядок заповнений, видаляємо його
             row--; // Перевіряємо той самий рядок після видалення
         }
@@ -292,6 +278,17 @@ function updateScore() {
     gameInterval = setInterval(moveDown, dropSpeed); // Запустити новий інтервал
 }
 
+function calculateScore() {
+    // Класичний підрахунок очок у Тетрісі
+    switch (level) {
+        case 1: return 40 * (level + 1);
+        case 2: return 100 * (level + 1);
+        case 3: return 300 * (level + 1);
+        case 4: return 1200 * (level + 1); // Тетріс!
+        default: return 0;
+    }
+}
+
 function startGame(selectedLevel) {
     // Схожий процес як і раніше, тільки інтервал буде налаштований на рух лише одного кроку за такт
     gameTitle.style.display = "none";
@@ -346,7 +343,6 @@ function endGame() {
 document.addEventListener("keydown", e => {
     if (e.key === "ArrowLeft") moveLeft();
     if (e.key === "ArrowRight") moveRight();
-    if (e.key === "ArrowUp") rotateFigure();
     if (e.key === "ArrowDown") {
         if (!isMovingDown) moveDownOneStep();; // Рух тільки якщо не рухається вниз
     }
